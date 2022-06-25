@@ -9,7 +9,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #fafafa;
   color: #212121;
-  line-height: 1.5;
+  line-height: 1.5; 
+  padding: 0 20;
+  background-image: url(../images/dot-grid.webp);
 }
 
 #search-box {
@@ -17,4 +19,29 @@ body {
   padding: 8px;
   max-width: 320px;
   margin-bottom: 16px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  display: flex;  
+  align-items: center;
+  margin-bottom: 5;
+  font-weight: 500;
+}
+
+img {
+margin-right: 5;
+width: 20;
+}
+
+h3 {
+  margin: 0 20px;
+}
+
+.country-info__img{
+  width: 35px;
 }

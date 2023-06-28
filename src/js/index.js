@@ -3,22 +3,18 @@ import debounce from "lodash.debounce";
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { fetchCountries } from './fetchCountries';
 
-
 const inputField = document.querySelector('#search-box');
 const countryList = document.querySelector('.country-list');
 const countryInfo = document.querySelector('.country-info');
 const DEBOUNCE_DELAY = 300;
 
-
 inputField.addEventListener('input',  debounce(onInput, DEBOUNCE_DELAY));
-
 
 function onInput () {
     const inputName = inputField.value.trim();
     resetList();
     resetCard();
-
-    
+  
     if(inputName === ""){
         resetList();
         resetCard();
@@ -26,16 +22,13 @@ function onInput () {
     
     fetchCountries(inputName)
     .then(response => {
-
         if(response.length > 1 && response.length <= 10){
             createListMarkup (response)
         };
         
-
         if (response.length > 10){
             Notify.info("Too many matches found. Please enter a more specific name.");
         };
-
 
         if(response.length === 1){
             createCardMarkup(response[0])
@@ -46,23 +39,19 @@ function onInput () {
     });
 };  
 
-
 function createListMarkup (response){
     return response.map(e => {               
         countryList.insertAdjacentHTML('beforeend',  `<li><img src="${e.flags.svg}" alt="">${e.name.common}</li>`)
         })
 };
 
-
 function resetList(){
     countryList.innerHTML = '';
 };
 
-
 function resetCard(){
     countryInfo.innerHTML = '';
 };
-
 
 function createListMarkup (response){
     return response.map(e => {               
